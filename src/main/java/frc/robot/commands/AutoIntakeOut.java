@@ -21,7 +21,7 @@ public class AutoIntakeOut extends CommandBase {
   @Override
   public void initialize() {
     _startTime = System.currentTimeMillis();
-    _bootyIntake.setState(BootyState.ConeIntake);
+    _bootyIntake.setState(BootyState.CubeOuttake);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
