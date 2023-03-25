@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.subsystems.Booty_Intake;
 import frc.robot.subsystems.Drive_Train;
 import frc.robot.subsystems.IntakePivot;
@@ -18,7 +19,8 @@ public class Auto18PointSequence extends SequentialCommandGroup {
       new AutoPivotUp(intakePivot),
       new AutoIntakeOut(bootyIntake),
       new AutoDriveOverChargingStation(driveTrain),
-      new AutoDriveBackToChargingStation(driveTrain)
+      new WaitCommand(2.0), // wait 2 seconds for the charging station to stop moving
+      new AutoMountChargingStation(driveTrain)
     );
   }
 }

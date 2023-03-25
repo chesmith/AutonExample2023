@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -73,12 +74,14 @@ public class RobotContainer {
       return new AutoPivotUp(_intakePivot)
         .andThen(new AutoIntakeOut(_bootyIntake))
         .andThen(new AutoDriveOverChargingStation(_drive_Train))
-        .andThen(new AutoDriveBackToChargingStation(_drive_Train));
+        .andThen(new WaitCommand(2.0)) // wait 2 seconds for the charging station to stop moving
+        .andThen(new AutoDriveOntoChargingStation(_drive_Train));
     } else if (_autoSelected == "Using PID stabilize") {
       return new AutoPivotUp(_intakePivot)
         .andThen(new AutoIntakeOut(_bootyIntake))
         .andThen(new AutoDriveOverChargingStation(_drive_Train))
-        .andThen(new AutoDriveBackToChargingStation(_drive_Train))
+        .andThen(new WaitCommand(2.0)) // wait 2 seconds for the charging station to stop moving
+        .andThen(new AutoMountChargingStation(_drive_Train))
         .andThen(new AutoStabilize(_drive_Train, _gyro));
     }
 

@@ -7,7 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drive_Train;
 
-public class AutoDriveBackToChargingStation extends CommandBase {
+public class AutoMountChargingStation extends CommandBase {
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////
   // PURPOSE: This command drives the robot back to the charging station after having              //
@@ -21,7 +21,7 @@ public class AutoDriveBackToChargingStation extends CommandBase {
   private Drive_Train _driveTrain;
   private double _startingPosition;
 
-  public AutoDriveBackToChargingStation(Drive_Train driveTrain) {
+  public AutoMountChargingStation(Drive_Train driveTrain) {
     _driveTrain = driveTrain;
     addRequirements(_driveTrain);
   }
